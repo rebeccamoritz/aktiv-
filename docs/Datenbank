@@ -1,0 +1,46 @@
+Datenbank
+
+Winter start_date (22.12.), end_date (19.3.)
+  Schnee - Indoor - Rodeln
+  Regen - Indoor - Yoga
+  Sonne - Outdoor - Walken
+  Bewölkt - Outdoor/Indoor - Eislaufen o+i
+  Windig - Outdoor/Indoor - Laufen/Bauchmuskeln
+  Eisig > 0 Grad - Indoor - Hallenbad+Sauna
+
+Frühling start_date (20.3.), end_date (20.6.)
+  Regen - Indoor - Bowling
+  Sonne - Outdoor - Tischtennis im Park
+  Bewölkt - Outdoor/Indoor - Stadtspaziergang/Tanzen
+  Windig - Outdoor/Indoor - Basketball im Park/Badminton
+
+Sommer start_date (21.6.), end_date (22.9.)
+  Hitze < 30 Grad - Outddor - Freibad
+  Regen - Indoor - Squash
+  Sonne - Outdoor - Laufen
+  Bewölkt - Outdoor/Indoor - Klettergarten/Kletterhalle
+  Windig - Outdoor/Indoor - Tennis o+i
+
+Herbst start_date (23.9.), end_date (21.6.)
+  Regen - Indoor - Pilates
+  Sonne - Outdoor - Radfahren
+  Bewölkt - Outdoor/Indoor - Laufen/Bauchmuskeln
+  Windig - Outdoor/Indoor - Rollschuhfahren/Bauch, Bein, Po
+
+
+
+Aktivitaet:
+* Name (string)
+* latitude (long)
+* longitude (long)
+* Beschreibung (text)
+* Link (string)
+
+* Winter (boolean)
+* Fruehling (boolean)
+* Sommer (boolean)
+* Herbst (boolean)
+* Regen (boolean)
+* Sonne (boolean)
+
+APP  - API (aktivitaeten.json) - DB
