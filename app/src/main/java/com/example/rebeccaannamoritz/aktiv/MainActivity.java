@@ -24,6 +24,7 @@ import retrofit.Callback;
 import retrofit.Response;
 import retrofit.Retrofit;
 
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -37,15 +38,30 @@ public class MainActivity extends AppCompatActivity
     //Liste aufrufen
     List<Aktivitaet> aktivitaetenList;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Fragmente instanzieren
+        listView = (Fragment1_class) Fragment.instantiate(this, Fragment1_class.class.getName(), null);
+        mapView = (Fragment2_class) Fragment.instantiate(this, Fragment2_class.class.getName(), null);
+        infoView = (Fragment3_class) Fragment.instantiate(this, Fragment3_class.class.getName(), null);
+
+        fragmentManager = getFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.contentbereich, listView);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+
+
+        //oberer Teil der Navigation
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
+        /*
+        //Icon am unteren Bildschirmrand
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,8 +70,9 @@ public class MainActivity extends AppCompatActivity
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        });
+        });*/
 
+        //linker Teil der Navigation
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -65,20 +82,14 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        //Fragmente aufrufen
-        listView = (Fragment1_class) Fragment.instantiate(this, Fragment1_class.class.getName(), null);
-        mapView = (Fragment2_class) Fragment.instantiate(this, Fragment2_class.class.getName(), null);
-        infoView = (Fragment3_class) Fragment.instantiate(this, Fragment3_class.class.getName(), null);
-
-        fragmentManager = getFragmentManager();
-        fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.drawer_layout, listView);
-        fragmentTransaction.commit();
 
         //Funktion getAktiviteaten aufrufen
         getAktivitaeten();
+
     }
 
+
+    //Button um linke Navigation ein- und auszufahren
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -115,16 +126,15 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
-
-        View view = findViewById(android.R.id.content);
-
         int id = item.getItemId();
+        View view = findViewById(android.R.id.content);
 
         if (id == R.id.nav_activity) {
 
-             fragmentManager = getFragmentManager();
+            fragmentManager = getFragmentManager();
             fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.drawer_layout, listView);
+            fragmentTransaction.replace(R.id.contentbereich, listView);
+            fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
 
             /*
@@ -147,7 +157,8 @@ public class MainActivity extends AppCompatActivity
 
             fragmentManager = getFragmentManager();
             fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.drawer_layout, mapView);
+            fragmentTransaction.replace(R.id.contentbereich, mapView);
+            fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
 
             Snackbar.make(view, "Kartenansicht", Snackbar.LENGTH_LONG)
@@ -157,7 +168,8 @@ public class MainActivity extends AppCompatActivity
 
             fragmentManager = getFragmentManager();
             fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.drawer_layout, infoView);
+            fragmentTransaction.replace(R.id.contentbereich, infoView);
+            fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
 
             Snackbar.make(view, "Informationen", Snackbar.LENGTH_LONG)
