@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity
         mapView = (Fragment2_class) Fragment.instantiate(this, Fragment2_class.class.getName(), null);
         infoView = (Fragment3_class) Fragment.instantiate(this, Fragment3_class.class.getName(), null);
 
+        //Listenansicht
         fragmentManager = getFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.contentbereich, listView);
@@ -100,6 +101,7 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    //Menü
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -107,6 +109,8 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    /*
+    //Setting rechts in oberer Navigationsleiste
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -120,8 +124,9 @@ public class MainActivity extends AppCompatActivity
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    } */
 
+    //Wenn Item im Navigation Drawer Menü ausgewählt wird
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -129,6 +134,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
         View view = findViewById(android.R.id.content);
 
+        //Listview
         if (id == R.id.nav_activity) {
 
             fragmentManager = getFragmentManager();
@@ -137,22 +143,10 @@ public class MainActivity extends AppCompatActivity
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
 
-            /*
-            // Create new fragment and transaction
-            android.support.v4.app.FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-
-            // Replace whatever is in the fragment_container view with this fragment,
-            // and add the transaction to the back stack
-            transaction.replace(R.id.fragment, new MainActivityFragment());
-            transaction.addToBackStack(null);
-
-            // Commit the transaction
-            transaction.commit();
-            */
 
             Snackbar.make(view, "Aktivitäten", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
-
+        //Mapview
         } else if (id == R.id.nav_map) {
 
             fragmentManager = getFragmentManager();
@@ -163,7 +157,7 @@ public class MainActivity extends AppCompatActivity
 
             Snackbar.make(view, "Kartenansicht", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
-
+        //Infoview
         } else if (id == R.id.nav_info) {
 
             fragmentManager = getFragmentManager();
