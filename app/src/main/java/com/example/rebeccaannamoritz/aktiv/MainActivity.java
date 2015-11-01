@@ -16,6 +16,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.android.gms.common.api.GoogleApiClient;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -23,8 +25,6 @@ import retrofit.Call;
 import retrofit.Callback;
 import retrofit.Response;
 import retrofit.Retrofit;
-
-
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -43,6 +43,9 @@ public class MainActivity extends AppCompatActivity
     TextView tv1;
     TextView tv2;
     TextView tv3;
+
+    //Google Variable
+    GoogleApiClient mGoogleApiClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,7 +95,16 @@ public class MainActivity extends AppCompatActivity
         //Funktion getAktiviteaten aufrufen
         getAktivitaeten();
 
-    }
+        /*
+        //Google Maps Location
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .addApi(LocationServices.API)
+                .build();
+    */
+
+}
 
 
     //Button um linke Navigation ein- und auszufahren

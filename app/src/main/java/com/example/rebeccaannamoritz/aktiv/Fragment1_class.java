@@ -24,7 +24,9 @@ public class Fragment1_class extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View fraglayoutv = inflater.inflate(R.layout.frag1_layout, null);
+
         return fraglayoutv;
+
     }
 
     @Override
