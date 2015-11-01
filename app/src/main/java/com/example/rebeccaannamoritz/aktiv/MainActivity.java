@@ -4,10 +4,8 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -15,6 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import java.io.IOException;
 import java.util.List;
@@ -23,6 +23,7 @@ import retrofit.Call;
 import retrofit.Callback;
 import retrofit.Response;
 import retrofit.Retrofit;
+
 
 
 public class MainActivity extends AppCompatActivity
@@ -38,6 +39,10 @@ public class MainActivity extends AppCompatActivity
     //Liste aufrufen
     List<Aktivitaet> aktivitaetenList;
 
+    //Text View Variablen
+    TextView tv1;
+    TextView tv2;
+    TextView tv3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -207,7 +212,15 @@ public class MainActivity extends AppCompatActivity
                 if (aktivitaetenList == null) return;
 
                 for (Aktivitaet a : aktivitaetenList){
-                    System.out.println ("- id:                  " + a.id);
+
+                    tv1 = (TextView) findViewById(R.id.text_title);
+                    tv1.setText("\nAktivität Name :" + a.name);
+                    tv2 = (TextView) findViewById(R.id.text_description);
+                    tv2.setText("\nBeschreibung :" + a.beschreibung);
+                    tv3 = (TextView) findViewById(R.id.text_link);
+                    tv3.setText("\nLink :" + a.link);
+
+                    System.out.println("- id:                  " + a.id);
                     System.out.println ("- name:                " + a.name);
                     System.out.println ("- lat:                 " + a.lat);
                     System.out.println ("- longi:               " + a.longi);

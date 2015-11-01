@@ -21,4 +21,20 @@ public class Aktivitaet {
     Integer schnee;
     Integer schauer;
     Integer gewitter;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getBeschreibung() {
+        return beschreibung;
+    }
+
+    public void setBeschreibung(String beschreibung) {
+        this.beschreibung = beschreibung;
+    }
 }
