@@ -40,9 +40,9 @@ public class MainActivity extends AppCompatActivity
     List<Aktivitaet> aktivitaetenList;
 
     //Text View Variablen
-    TextView tv1;
-    TextView tv2;
-    TextView tv3;
+    public TextView tv1;
+    public TextView tv2;
+    public TextView tv3;
 
     //Google Variable
     GoogleApiClient mGoogleApiClient;
@@ -226,13 +226,14 @@ public class MainActivity extends AppCompatActivity
                 for (Aktivitaet a : aktivitaetenList){
 
                     tv1 = (TextView) findViewById(R.id.text_title);
-                    tv1.setText("\nAktivität Name :" + a.name);
+                    tv1.setText("\nAktivität Name: " + a.name);
                     tv2 = (TextView) findViewById(R.id.text_description);
-                    tv2.setText("\nBeschreibung :" + a.beschreibung);
+                    tv2.setText("\nBeschreibung: " + a.beschreibung);
                     tv3 = (TextView) findViewById(R.id.text_link);
-                    tv3.setText("\nLink :" + a.link);
+                    tv3.setText("\nLink: " + a.link);
 
-                    System.out.println("- id:                  " + a.id);
+
+                    System.out.println ("- id:                  " + a.id);
                     System.out.println ("- name:                " + a.name);
                     System.out.println ("- lat:                 " + a.lat);
                     System.out.println ("- longi:               " + a.longi);
